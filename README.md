@@ -43,7 +43,9 @@ node server.js
 You should see:
 
 Server running on http://localhost:5000
+
 Serving files from: [...]\public
+
 Open http://localhost:5000 in your browser
 
 6. Open in Browser
