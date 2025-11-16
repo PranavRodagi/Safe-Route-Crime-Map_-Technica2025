@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SafeRoute Crime Map</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body { 
+            margin: 0; 
+            font-family: Arial, sans-serif; 
+            background: #111; 
+            color: #eee; 
+        }
+        
+        #map { 
+            height: 100vh; 
+            width: 100%; 
+        }
+
+        .sidebar {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: #222;
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 1000;
+            width: 260px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        
+        .sidebar h2 { 
+            color: #f55; 
+            margin-top: 0; 
+            font-size: 22px;
+        }
+
+        .checkbox-container label {
+            display: block;
+            font-size: 18px;
+            margin: 5px 0;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .checkbox-container input {
+            width: 24px; 
+            height: 24px; 
+            margin-right: 6px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .address-input {
+            margin: 6px 0;
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            background: #f55;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        
+        .btn:hover { 
+            background: #ff7777; 
+        }
+        
+        .btn:active {
+            background: #cc0000;
+        }
+
+        .legend {
+            background: #222;
+            padding: 8px;
+            border-radius: 6px;
+            color: #eee;
+            margin-top: 10px;
+        }
+        
+        .legend strong {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 6px;
+        }
+        
+        .legend span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 6px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>SafeRoute Filters</h2>
+        <div class="checkbox-container">
+            <label><input type="checkbox" class="crime-filter" value="THEFT"> Theft</label>
+            <label><input type="checkbox" class="crime-filter" value="BATTERY"> Battery</label>
+            <label><input type="checkbox" class="crime-filter" value="ASSAULT"> Assault</label>
+            <label><input type="checkbox" class="crime-filter" value="ROBBERY"> Robbery</label>
+            <label><input type="checkbox" class="crime-filter" value="HATE_CRIME"> Gender Hate Crime</label>
+        </div>
+
+        <input type="text" id="startInput" class="address-input" placeholder="Start Address">
+        <input type="text" id="endInput" class="address-input" placeholder="End Address">
+        <button id="routeBtn" class="btn">Find Safe Route</button>
+
+        <div class="legend">
+            <strong>Crime Legend</strong>
+            <div><span style="background:#ff4444"></span> Theft</div>
+            <div><span style="background:#ff8844"></span> Battery</div>
+            <div><span style="background:#ffcc00"></span> Assault</div>
+            <div><span style="background:#cc0000"></span> Robbery</div>
+            <div><span style="background:#9900ff"></span> Gender Hate Crime</div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Leaflet Heat JS -->
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <!-- Your app JS -->
+    <script src="app.js"></script>
+</body>
+</html>
