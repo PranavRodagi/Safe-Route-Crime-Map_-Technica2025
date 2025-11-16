@@ -31,7 +31,7 @@ saferoute-app/
 
 └── package.json (will be created next)
 
-4. Install Dependencies
+4. Install Dependencies 
 Open terminal/command prompt in the project folder and run:
 npm init -y
 and then enter:
